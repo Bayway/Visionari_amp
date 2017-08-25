@@ -1,0 +1,23 @@
+language: node_js
+env:
+  global:
+    - "FTP_USER="
+    - "FTP_PASSWORD="
+before_install:
+  #- npm install
+  #- npm install bower
+  #- bower install
+install:
+  - npm install vinyl-ftp gulp-util minimist --save-dev
+  - npm install gulp
+before_script:
+  - npm install python
+script:
+  gulp deploy --user $FTP_USER --password $FTP_PASSWORD
+  #- gulp build
+after_success:
+    #gulp deploy --user $FTP_USER --password $FTP_PASSWORD
+    #"curl --ftp-create-dirs -T uploadfilename -u $FTP_USER:$FTP_PASSWORD ftp.baywaylabs.it/public_html/"
+notifications:
+  email: false
+
