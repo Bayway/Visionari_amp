@@ -4,7 +4,7 @@ python:
 addons:
   apt:
     packages:
-    - lftp
+    - ncftp
 env:
   global:
   - secure: kM8kHlajA/aLl53IpoatHSqGmIIjradaHbiPo9z0oqD78c/ZIgq7jAb0f5qTRd50pTBi299fHCyF6g0TLiswiFCppE2PjUrnWc9/Yva72WOBh9L+kNcK0vsm1f0X/QOda2kAmIQQnOOFNU1c3no4GXZyEIkjtCC8SyViggG5Siet8g8Opby3glkD1HpsG6t7JLy0yHOhhb0PeGP9mS5XCpjSaxIISKquF/D7GiZQmCqZJiEh2EFAFy435hygho6Zhcc2Av9z6NpXr0haMAGAZeIDR7K2myuRb8g3lklV6qIFbzIJPPBJl+3IJzVNA9G6fNE7JNHP29kudsYB1hRlIHQzFL+tlFokHzMCMdJepW5ExbXDUknHR74mGiTNI3uUziTAmV7VMp5x/uXYVfP5oGFfPUtOijcHToxzl7bn5axb3wQ97JTQOBoz+wFCbLzdeuzutuBWMg7vj0n/1A7isCAX8MV00ffmO37P3hoFfCDm1aE7XIa9/00SusQ4PelFMv7kC7H9RN5EV1rUt0L2j+mQ14HohDndbec7VP4r96sWVuM5bgK++WJhFO6VMfK6bBRcH8TIYPd+8/BGFFbywg+U/jCRyO1slX+rlA0fztnjclqHm9ldRl9zwhSXgkFGhLcW4pd64eGaq+LmzddIP41/T1bDhaa9Xl5vuKa316g=
@@ -15,6 +15,6 @@ install:
 - pip install bs4 feedparser
 before_script: 
 script: python script.py
-after_success: lftp -e "mirror -R ./html/ public_html/Visionari" -u $FTP_USER,$FTP_PASSWORD ftp.baywaylabs.it #curl --ftp-create-dirs -T ./html/ -u $FTP_USER:$FTP_PASSWORD $FTP_HOST
+after_success: ncftpput -R -v -u "$FTP_USER" -p "$FTP_PASSWORD" ftp.baywaylabs.it /public_html/Visionari ./html/ #curl --ftp-create-dirs -T ./html/ -u $FTP_USER:$FTP_PASSWORD $FTP_HOST
 notifications:
   email: false
