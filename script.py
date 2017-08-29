@@ -31,8 +31,10 @@ def post_is_in_db(post):
 # return true if the post is in the database with a timestamp > limit
 def post_is_in_db_with_old_timestamp(post):
     with open(db, 'r', encoding='utf-8') as database:
-        for line in database:
+        print(database.readlines())
+        for line in database.readlines():
             if post in line:
+                result = line.split('|', 1)
                 ts_as_string = line.split('|', 1)[5]
                 ts = int(ts_as_string)
                 if current_timestamp - ts > limit:
