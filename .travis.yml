@@ -15,6 +15,6 @@ install:
 - pip install bs4 feedparser
 before_script: 
 script: python script.py
-after_success: lftp -e "mirror -R ./html/ public_html/Visionari}" -u $FTP_USER,$FTP_PASSWORD ftp.baywaylabs.it #curl --ftp-create-dirs -T ./html/ -u $FTP_USER:$FTP_PASSWORD $FTP_HOST
+after_success: lftp -e "mirror -R ./html/ public_html/Visionari" -u $FTP_USER,$FTP_PASSWORD ftp.baywaylabs.it #curl --ftp-create-dirs -T ./html/ -u $FTP_USER:$FTP_PASSWORD $FTP_HOST
 notifications:
   email: false
