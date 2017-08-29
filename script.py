@@ -22,7 +22,7 @@ current_time_millis = lambda: int(round(time.time() * 1000))
 current_timestamp = current_time_millis()
 
 def post_is_in_db(post):
-    with open(db, 'r') as database:
+    with open(db, 'r', encoding='utf-8') as database:
         for line in database:
             if post in line:
                 return True
@@ -30,7 +30,7 @@ def post_is_in_db(post):
 
 # return true if the post is in the database with a timestamp > limit
 def post_is_in_db_with_old_timestamp(post):
-    with open(db, 'r') as database:
+    with open(db, 'r', encoding='utf-8') as database:
         for line in database:
             if post in line:
                 ts_as_string = line.split('|', 1)[5]
@@ -57,7 +57,7 @@ for post in feed.entries:
     soup = BeautifulSoup(statusupdate[0]['value'])
     print("IMG------------------>" + soup.find("img")["src"])
     title = post.title
-    description = post.summary
+    description = str(soup.find("h4"))
     image = soup.find("img")["src"]
     link = post.link
     date = post.published
@@ -71,7 +71,7 @@ for post in feed.entries:
 # add all the posts we're going to print to the database with the current timestamp
 # (but only if they're not already in there)
 #
-f = open(db, 'a')
+f = open(db, 'a', encoding='utf-8')
 for post in posts_to_print:
     if not post_is_in_db(post):
         f.write(post + "|" + str(current_timestamp) + "\n")

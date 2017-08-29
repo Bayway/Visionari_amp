@@ -1,23 +1,16 @@
-language: node_js
+language: python
+python:
+- '3.6'
 env:
   global:
-    - "FTP_USER="
-    - "FTP_PASSWORD="
-before_install:
-  #- npm install
-  #- npm install bower
-  #- bower install
+  - secure: kM8kHlajA/aLl53IpoatHSqGmIIjradaHbiPo9z0oqD78c/ZIgq7jAb0f5qTRd50pTBi299fHCyF6g0TLiswiFCppE2PjUrnWc9/Yva72WOBh9L+kNcK0vsm1f0X/QOda2kAmIQQnOOFNU1c3no4GXZyEIkjtCC8SyViggG5Siet8g8Opby3glkD1HpsG6t7JLy0yHOhhb0PeGP9mS5XCpjSaxIISKquF/D7GiZQmCqZJiEh2EFAFy435hygho6Zhcc2Av9z6NpXr0haMAGAZeIDR7K2myuRb8g3lklV6qIFbzIJPPBJl+3IJzVNA9G6fNE7JNHP29kudsYB1hRlIHQzFL+tlFokHzMCMdJepW5ExbXDUknHR74mGiTNI3uUziTAmV7VMp5x/uXYVfP5oGFfPUtOijcHToxzl7bn5axb3wQ97JTQOBoz+wFCbLzdeuzutuBWMg7vj0n/1A7isCAX8MV00ffmO37P3hoFfCDm1aE7XIa9/00SusQ4PelFMv7kC7H9RN5EV1rUt0L2j+mQ14HohDndbec7VP4r96sWVuM5bgK++WJhFO6VMfK6bBRcH8TIYPd+8/BGFFbywg+U/jCRyO1slX+rlA0fztnjclqHm9ldRl9zwhSXgkFGhLcW4pd64eGaq+LmzddIP41/T1bDhaa9Xl5vuKa316g=
+  - secure: gZB6UBOWibTYTpfRniT6NU87s7G9yW8jWStnk1oBtcddHPAQh6/KM4lh0s83qXzVVDsI6JOzE546zbwz34x+Q+6tXWyzbwkwDCCHDy8TvIc5TQ+U/vB3Krpl+RevEYOx9fOgzQaoaGAPm+KC5VVpywV70sfH14cnxBTtoqBrVP75kmC89GNfb7PLjlijei4hwXUCbuqnzcdWIHUDorhzP65zYYsEBpFtPQF2+6cetQljO4kFiV1xOuSK35WFR0RWWlyRA8bANUpZDugWch8KlceUSONw4Opi1zdkAy/ui+Bybtzl2ULU5Q8L3Bn4yxgi0TnIq0DaLhfkOfVojT/ZQSiCYEsnJYUMSYOPgf17wU/zKdWGTvVrmwnh7YVsUVUbuHegdoEJekRioBO1IJDB1fHMmv0Q464Gahhrm+1hSxP6sJc4e1J62yaEnXN0dxX+zzmis0tOGRJaKgw8BhpSMGUh8LgNJO5/RjSuFSSifByGu9NeK4yft8BQmbkrr/3PHFyVBPeAtXza28+BpyPwt3hhkGwrXKujI61lg90HPWk92mH2hXUkTkncDV/MW6R1ZmpD7/7NsN9IIxS2ltetUmBc8HxOwEvHoln9Oa4Y4UvV2Z7/JT3VSCK8SeCquEAyK/Mi1OLa6BTm8up3toMJCbyuG38SbM1tig17g8FJsg4=
+  - secure: tEpkiVvU6nqICWd8bkMOzPsPKmGv7jFv4J/RkGdWdSHy87sg/M9fcmoVclmdZLRhIsgubm0PRomtCnPBG1FwBMqghHKd/UdreFARz+5JbaAIa7VJceLpPcsqXknliWCdrI2u72KMm1h30nObKsDzf78AKc86TFhXtN211FAbsbNnpuX4uRyUpjrMbmqQk/6Ta0thIOPfpZIzUlwSuVhIW36HvJtsFrMoaJ6OjQnKYxz1Ggi7a6f6kEXvfYlmkM8pGWt60MUxC6nSCHaO3mi0UIlikriby0xniK2RUbEiGubQfwpYhQ2mgwVzHMwjDbQ9dym5tD1o/1KfziS7TQQwDIeIY9JF8KAgj4VThdX0SHKbCydqG6dmlaQIZDRK8vJM2KpHN2QuMtBmP4GaftS9/s7Mj18lYD1vGYIpIFK0LbERg0AIAJ8RBzZvS1vb58R6PuExivQ9cxqvOTJiDi9Hcc8vso+DNKtfwrtd0UfuDMLWffvIrFAdB6BpLLUq1Dv1Gq7iHUzzm4B3hufOUG6V53PuWcx2Tun+XBbqVTIBB676WTdWNtu8FfrJPm6HZKaSJqknp+w2a6dF1KOdmpVLpC8vZS7X5YlHDfziAASmV5lSdD6EaD2ozHtXqe9b3bXtUl8Yqnzb2tMzqWnxNXva0kRq8RVPJI9OecxOLHBYYhg=
+before_install: 
 install:
-  - npm install vinyl-ftp gulp-util minimist --save-dev
-  - npm install gulp
-before_script:
-  - npm install python
-script:
-  gulp deploy --user $FTP_USER --password $FTP_PASSWORD
-  #- gulp build
-after_success:
-    #gulp deploy --user $FTP_USER --password $FTP_PASSWORD
-    #"curl --ftp-create-dirs -T uploadfilename -u $FTP_USER:$FTP_PASSWORD ftp.baywaylabs.it/public_html/"
+- pip install bs4 feedparser
+before_script: 
+script: python script.py
+after_success: curl --ftp-create-dirs -T ./html/ -u FTP_USER:FTP_PASSWORD FTP_HOST
 notifications:
   email: false
-
