@@ -32,6 +32,12 @@
         left: 0;
         right: 0;
       }
+      amp-user-notification > div {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
   </style>
 
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
@@ -79,6 +85,7 @@
   <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
   <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
   <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+  <script async custom-element="amp-user-notification" src="https://cdn.ampproject.org/v0/amp-user-notification-0.1.js"></script>
 
 </head>
 <body>
@@ -128,6 +135,13 @@
     See more
   </div>
 </amp-list>
+
+<amp-user-notification layout="nodisplay"
+  id="my-notification">
+  <div>This page might use cookies if your analytics vendor requires them.
+  <button on="tap:my-notification.dismiss" class="ampstart-btn caps ml1">I Accept</button>
+  </div>
+</amp-user-notification>
 
 <!-- Insert Google Analytics or other website analytics tracking code here -->
 <script>
