@@ -124,9 +124,11 @@
   layout="fixed-height"
   src="data/medium.json">
   <template type="amp-mustache">
-    <amp-img src="{{image}}"></amp-img>
+    <div class="image-entry">
+      <amp-img src="{{image}}" height="250px" width="350px" layout="responsive"></amp-img>
+    </div>
     <div class="url-entry">
-      <a href="{{url}}">{{title}}</a>
+      <a href="{{url}}">{{title}}</a>&nbsp - {{date}}
     </div>
   </template>
   <br>
